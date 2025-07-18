@@ -91,6 +91,32 @@ wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/StartQ
 wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/Batch_Inference.py
 ```
 
+---
+
+## 量化
+
+- 首先安装量化包
+pip install auto-gptq optimum
+- 从modelscope下载Qwen的Int4量化模型
+git clone https://www.modelscope.cn/Qwen/Qwen-7B-Chat-Int4.git
+
+- 修改之前的启动代码
+```bash
+model = AutoModelForCausalLM.from_pretrained(
+    "Qwen/Qwen-7B-Chat-Int4",
+    device_map="auto",
+    trust_remote_code=True
+).eval()
+response, history = model.chat(tokenizer, "Hi", history=None)
+```
+
+- 可以直接用在github中修改的版本
+```bash
+wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/GPTQ_Batch_Inference.py
+```
+---
+
+
 ## 📚 参考
 
 - [Qwen-7B GitHub](https://github.com/QwenLM/Qwen-7B)

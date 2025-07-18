@@ -114,6 +114,10 @@ response, history = model.chat(tokenizer, "Hi", history=None)
 ```bash
 wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/GPTQ_Batch_Inference.py
 ```
+
+- 注意版本要求
+> torch==2.1 auto-gptq>=0.5.1 transformers>=4.35.0 optimum>=1.14.0 peft>=0.6.1
+torch>=2.0,<2.1 auto-gptq<0.5.0 transformers<4.35.0 optimum<1.14.0 peft>=0.5.0,<0.6.0
 ---
 
 

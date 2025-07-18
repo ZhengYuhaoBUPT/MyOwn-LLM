@@ -85,9 +85,11 @@ http://<你的服务器IP>:7860
 
 ```bash
 wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/StartQwen.py
+```
+- 也可以使用batch推理加速
+```bash
 wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/Batch_Inference.py
 ```
-
 
 ## 📚 参考
 

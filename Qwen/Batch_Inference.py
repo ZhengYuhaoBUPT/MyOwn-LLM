@@ -1,3 +1,5 @@
+## 代码放在../qwen-7b-chat/文件夹内
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers import GenerationConfig
@@ -16,7 +18,7 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",
     trust_remote_code=True
 ).eval()
-model.generation_config = GenerationConfig.from_pretrained('./qwen-7b-cha', pad_token_id=tokenizer.pad_token_id)
+model.generation_config = GenerationConfig.from_pretrained('./qwen-7b-chat', pad_token_id=tokenizer.pad_token_id)
 
 all_raw_text = ["我想听你说爱我。", "今天我想吃点啥，甜甜的，推荐下", "我马上迟到了，怎么做才能不迟到"]
 batch_raw_text = []

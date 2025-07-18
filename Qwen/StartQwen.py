@@ -1,3 +1,5 @@
+## 放在../Qwen-7B/获得../qwen-7b-chat/均可
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.generation import GenerationConfig
 

@@ -81,6 +81,14 @@ http://<你的服务器IP>:7860
 
 ---
 
+## 🤪 拉取Qwen的Python运行程序
+
+```bash
+wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/StartQwen.py
+wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/Batch_Inference.py
+```
+
+
 ## 📚 参考
 
 - [Qwen-7B GitHub](https://github.com/QwenLM/Qwen-7B)

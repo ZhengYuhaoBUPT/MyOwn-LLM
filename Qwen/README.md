@@ -62,6 +62,12 @@ python web_demo.py -c ../qwen-7b-chat --server-name 0.0.0.0 --server-port 7860
 http://<你的服务器IP>:7860
 ```
 
+若不想使用web，可以直接在命令行玩qwen-7b-chat：
+```bash
+wget https://raw.githubusercontent.com/ZhengYuhaoBUPT/MyOwn-LLM/main/Qwen/cli_demo.py
+python cli_demo.py
+```
+
 ---
 
 ## ✅ 常见问题

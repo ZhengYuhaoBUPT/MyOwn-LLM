@@ -1,7 +1,7 @@
 #!/bin/bash
 export CUDA_DEVICE_MAX_CONNECTIONS=1
 
-MODEL="../../qwen-7b-chat" # Set the path if you do not want to load from huggingface directly
+MODEL="../qwen-7b-chat" # Set the path if you do not want to load from huggingface directly
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
 # See the section for finetuning in README for more information.
 DATA="question_data.json"

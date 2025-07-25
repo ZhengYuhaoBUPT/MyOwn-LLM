@@ -1,4 +1,4 @@
-# 🧠 MyOwn-LLM: Local Multi-Model Deployment & Inference Platform
+# 🧠 MyOwn-LLM: Multi-Model Deployment & Inference Platform
 
 📍 **MyOwn-LLM** is an experimental platform designed for local deployment and service integration of multiple open-source large language models (LLMs). It aims to explore the inference performance, API service design, and edge adaptation capabilities of LLMs for Chinese semantic tasks.
 

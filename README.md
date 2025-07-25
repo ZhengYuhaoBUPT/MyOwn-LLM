@@ -1,78 +1,76 @@
-# 🧠 MyOwn-LLM: 多模型本地部署与推理平台
+# 🧠 MyOwn-LLM: Local Multi-Model Deployment & Inference Platform
 
-📍 **MyOwn-LLM** 是一个支持多个开源大语言模型（LLMs）本地化部署与服务集成的实验平台，致力于探索中文语义任务中 LLM 的推理性能、服务接口设计与边缘部署适配能力。
-
----
-
-## 🚀 已支持模型 Models Supported
-
-| 模型名称         | 参数规模 | 来源/架构           | 推理方式       | 状态       |
-|------------------|-----------|---------------------|----------------|------------|
-| Qwen-7B          | 7B        | 阿里 Qwen           | HuggingFace + Transformers | ✅ 已部署 |
-| ChatGLM3-6B      | 6B        | 清华智谱            | HuggingFace + PEFT         | 🟡 计划中 |
-| LLaMA2-7B        | 7B        | Meta + 中文微调     | PEFT + LoRA    | 🟡 计划中 |
-| Baichuan2-13B    | 13B       | 百川智能            | 分布式部署实验 | 🔲 待测试 |
-| InternLM-Chat-7B | 7B        | 上海 AI Lab         | 🤖 多轮对话实验 | 🔲 待集成 |
+📍 **MyOwn-LLM** is an experimental platform designed for local deployment and service integration of multiple open-source large language models (LLMs). It aims to explore the inference performance, API service design, and edge adaptation capabilities of LLMs for Chinese semantic tasks.
 
 ---
 
-## 🧠 项目目标 Project Goals
+## 🚀 Supported Models
 
-- ✅ 快速部署并本地推理多种中文 LLM 模型；
-- ✅ 统一接口（API）管理不同模型，提升可扩展性；
-- ✅ 探索模型轻量化（LoRA、量化）在不同任务下的表现；
-- ✅ 支持模型性能对比评估（响应时间、准确率、内存占用）；
-- ❓ 探索在边缘节点或低资源环境中的部署可行性（与卫星-边缘计算场景结合）；
-
----
-
-## 🧪 应用场景 Use Cases
-
-- 💬 中文问答系统
-- 📝 智能摘要与改写
-- 🤖 多轮对话系统构建
-- 🔒 私有部署 & 本地隐私问答
-- 📡 边缘设备/卫星节点中的推理部署实验
+| Model Name        | Parameters | Source/Architecture   | Inference Framework         | Status      |
+|------------------|------------|------------------------|-----------------------------|-------------|
+| Qwen-7B           | 7B         | Alibaba Qwen           | HuggingFace + Transformers | ✅ Deployed  |
+| ChatGLM3-6B       | 6B         | Tsinghua Zhipu         | HuggingFace + PEFT         | 🟡 Planned   |
+| LLaMA2-7B         | 7B         | Meta + Chinese Tuning  | PEFT + LoRA                | 🟡 Planned   |
+| Baichuan2-13B     | 13B        | Baichuan AI            | Distributed Deployment Exp. | 🔲 Untested |
+| InternLM-Chat-7B  | 7B         | Shanghai AI Lab        | 🤖 Multi-turn Dialog Exp.   | 🔲 Pending   |
 
 ---
 
-## 📌 使用示例 Example Usage
+## 🧠 Project Goals
 
-各模型的使用说明请参见子目录中的 `README.md`，例如：
-
-- [Qwen-7B 使用说明](./Qwen/README.md)
-- [ChatGLM3-6B 使用说明](./chatglm3-6b/README.md)（建设中）
-
----
-
-## 📈 模型性能对比（计划中）
-
-| 模型 | GPU推理耗时（s） | CPU推理耗时（s） | 显存占用 | 支持多轮对话 | 支持微调 |
-|------|------------------|------------------|-----------|----------------|------------|
-| Qwen-7B | ✅ | ⚠️ 慢 | 16 GB | ✅ | ✅ LoRA |
-| ChatGLM3 | 🔲 | 🔲 | 🔲 | 🔲 | 🔲 |
-| LLaMA2 | 🔲 | 🔲 | 🔲 | 🔲 | ✅ PEFT |
+- ✅ Rapid deployment & local inference of multiple Chinese LLMs;
+- ✅ Unified API interface for different models to improve scalability;
+- ✅ Exploration of lightweight tuning (LoRA, quantization) under various tasks;
+- ✅ Support for model performance benchmarking (latency, accuracy, memory usage);
+- ❓ Evaluate feasibility of edge/low-resource deployment (e.g., satellite-edge computing);
 
 ---
 
-## 📌 TODO 计划中功能
+## 🧪 Use Cases
 
-- [x] Qwen-7B 推理 API 部署（FastAPI）
-- [ ] ChatGLM3 加入与评估
-- [ ] LoRA 微调流程统一封装
-- [ ] Gradio/Web UI 页面集成
-- [ ] 模型性能对比模块
-- [ ] 日志系统与多用户支持
-- [ ] LangChain 接入（Agent 化）
+- 💬 Chinese question-answering systems
+- 📝 Intelligent summarization & rewriting
+- 🤖 Multi-turn dialog construction
+- 🔒 Private local deployment & secure Q&A
+- 📡 Edge/satellite device deployment experiments
 
 ---
 
-## 👨‍💻 作者 Author
+## 📌 Example Usage
 
-**郑雨昊 / Yuhao Zheng**  
-信息与通信工程硕士，北京邮电大学  
-研究方向：边缘计算、卫星网络、大语言模型应用  
+For usage instructions of each model, refer to the corresponding subdirectory `README.md`. For example:
+
+- [Qwen-7B Instructions](./Qwen/README.md)
+- [ChatGLM3-6B Instructions](./chatglm3-6b/README.md) *(in progress)*
+
+---
+
+## 📈 Planned Model Performance Comparison
+
+| Model     | GPU Inference Time (s) | CPU Inference Time (s) | VRAM Usage | Multi-turn Dialog | Fine-tuning Support |
+|-----------|------------------------|-------------------------|------------|-------------------|---------------------|
+| Qwen-7B   | ✅ Fast                 | ⚠️ Slow                 | 16 GB      | ✅ Supported       | ✅ LoRA             |
+| ChatGLM3  | 🔲 TBD                 | 🔲 TBD                 | 🔲 TBD      | 🔲 TBD            | 🔲 TBD              |
+| LLaMA2    | 🔲 TBD                 | 🔲 TBD                 | 🔲 TBD      | 🔲 TBD            | ✅ PEFT             |
+
+---
+
+## 📌 TODO Features
+
+- [x] Qwen-7B Inference API Deployment (FastAPI)
+- [ ] ChatGLM3 Integration & Evaluation
+- [ ] Unified LoRA Fine-tuning Pipeline
+- [ ] Gradio / Web UI Integration
+- [ ] Model Performance Benchmarking Module
+- [ ] Logging System & Multi-user Support
+- [ ] LangChain Integration (Agent-based)
+
+---
+
+## 👨‍💻 Author
+
+**Yuhao Zheng**  
+M.Sc. in Information and Communication Engineering, Beijing University of Posts and Telecommunications (BUPT)  
+Research Interests: Edge Computing, Satellite Networks, Large Language Model Applications  
 📫 yuhao_zheng@bupt.edu.cn  
 🌐 [GitHub](https://github.com/ZhengYuhaoBUPT)
-
----

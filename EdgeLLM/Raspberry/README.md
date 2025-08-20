@@ -114,7 +114,39 @@ Note: --advertise-address must be an IP address accessible to the Raspberry Pi (
 
 
 ### 3️⃣ Raspberry Pi joins the cloud (Edge Node)
-1. Install KubeEdge edgecore on a Raspberry Pi:
+1. Install Docker
+```
+# search for version
+docker version
+# delete former
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+# Add the official Docker GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to the Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/raspbian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# Install
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verification
+sudo docker run hello-world
+```
+
+2. Install keadm on Raspberry Pi:
+
+
+
+3. Install KubeEdge edgecore on a Raspberry Pi:
 ```
 curl -sfL https://github.com/kubeedge/kubeedge/releases/download/v1.15.0/kubeedge-v1.15.0-linux-arm64.tar.gz | tar -xz
 sudo mv kubeedge-v1.15.0-linux-arm64/edge/edgecore /usr/local/bin/

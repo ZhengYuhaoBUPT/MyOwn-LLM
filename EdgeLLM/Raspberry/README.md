@@ -121,32 +121,73 @@ docker version
 # delete former
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
-# Add the official Docker GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+# update apt
+sudo apt update
+sudo apt upgrade
 
-# Add the repository to the Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/raspbian \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
+# Install Docker dependencies
+sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
 
-# Install
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# Add the GPG key
+curl -fsSL https://get.docker.com | sh
 
-# Verification
+# Add Alibaba Cloud's Docker repository
+sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+
+# Install Docker
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+2. Configure Docker.
+Configure the user group and add the current user to the Docker group to avoid starting without permission.
+```
+sudo usermod -aG docker $USER
+
+reboot
+```
+
+3. Configuring Docker Acceleration
+```
+sudo vi /etc/docker/daemon.json
+# 直接复制进去并保存 （2025.2.15最新可用源,看到这里的同学评论一下是否还可用，不可用我会更新）
+ {
+  "registry-mirrors": [
+    "https://docker.hpcloud.cloud",
+    "https://docker.m.daocloud.io",
+    "https://docker.unsee.tech",
+    "https://docker.1panel.live",
+    "http://mirrors.ustc.edu.cn",
+    "https://docker.chenby.cn",
+    "http://mirror.azure.cn",
+    "https://dockerpull.org",
+    "https://dockerhub.icu",
+    "https://hub.rat.dev",
+    "https://proxy.1panel.live",
+    "https://docker.1panel.top",
+    "https://docker.m.daocloud.io",
+    "https://docker.1ms.run",
+    "https://docker.ketches.cn"
+  ]
+}
+# 启动/重启docker
+sudo systemctl daemon-reload  
+#如果还没启动
+sudo systemctl start docker
+#如果已经启动
+sudo systemctl restart docker
+# docker开机自启
+sudo systemctl enable docker
+
+# 验证镜像加速是否修改 查看Registry Mirrors部分
+sudo docker info
+```
+
+4. Verification
+```
 sudo docker run hello-world
 ```
 
-2. Install keadm on Raspberry Pi:
-
-
-
-3. Install KubeEdge edgecore on a Raspberry Pi:
+5. Install KubeEdge edgecore on a Raspberry Pi:
 ```
 curl -sfL https://github.com/kubeedge/kubeedge/releases/download/v1.15.0/kubeedge-v1.15.0-linux-arm64.tar.gz | tar -xz
 sudo mv kubeedge-v1.15.0-linux-arm64/edge/edgecore /usr/local/bin/

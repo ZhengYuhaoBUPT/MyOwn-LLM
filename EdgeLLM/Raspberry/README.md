@@ -112,6 +112,22 @@ keadm init --advertise-address=<Windows-PC-IP> --profile version=v1.15.0
 ```
 Note: --advertise-address must be an IP address accessible to the Raspberry Pi (either on the same LAN or after VPN/intranet penetration).
 
+---
+
+## 🔹Solution: Deploy Kubernetes (Control Plane) Using Containerization on the MACOS
+Kubernetes does not officially support native Master nodes on Windows, but you can use Docker to start a local containerized Kubernetes cluster:
+
+### 1️⃣ On the Mac PC
+Install Docker Desktop
+
+---
+
+### 2️⃣ Install Kubectl
+Install Docker Desktop and check 
+```
+kubectl version --client
+```
+---
 
 ### 3️⃣ Raspberry Pi joins the cloud (Edge Node)
 1. Install Docker

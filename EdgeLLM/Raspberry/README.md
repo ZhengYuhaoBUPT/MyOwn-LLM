@@ -123,10 +123,15 @@ Install Docker Desktop
 ---
 
 ### 2️⃣ Install Kubectl
-Install Docker Desktop and check 
+Install Docker Desktop and check, using kubeadm.
 ```
 kubectl version --client
 ```
+Expose the port to Raspberry Pi 5
+```
+kubectl proxy --address='0.0.0.0' --accept-hosts='^.\*$' --port=8001
+```
+
 ---
 
 ### 3️⃣ Raspberry Pi joins the cloud (Edge Node)
